@@ -1,26 +1,37 @@
 #include <stdio.h>
 
-int calculateOlderBrother(int youngerBrother, int middleBrother, int mother){
-    int olderBrother = 0;
+//Função para retornar a idade do irmão mais velho
+int returnOlderBrother(int mother, int brother1, int brother2){
+    int brother3, olderBrother = 0;
+    
+    brother3 = mother - brother2 - brother1;
 
-    olderBrother = (mother - youngerBrother - middleBrother);
+    if( brother3 > brother1 && brother3 > brother2) 
+        olderBrother = brother3; 
+
+    else if( brother1 > brother3 && brother1 > brother2) 
+            olderBrother = brother1; 
+
+    else if( brother2 > brother3 && brother2 > brother1) 
+        olderBrother = brother2; 
 
     return olderBrother;
 }
+int main() {
 
-int main(){
-    int olderBrotherAge = 0, youngerBrotherAge = 0,
-    middleBrotherAge = 0, motherAge = 0;
+    int olderBrother, mother = 1, brother1, brother2;
 
-    while (motherAge != 0)
-    {
-        scanf("%d, %d, %d", &motherAge, &youngerBrotherAge, &middleBrotherAge);
-        if(motherAge == 0)
-            break;
-        olderBrotherAge = calculateOlderBrother(youngerBrotherAge, middleBrotherAge, motherAge);
-        printf("%d", olderBrotherAge);
-    }
-    
+    while(mother != 0){
+
+    scanf("%d %d %d", &mother, &brother1, &brother2);
+
+    if(mother == 0)
+        break; 
+
+    olderBrother = returnOlderBrother(mother, brother1, brother2);
+
+    printf("%d\n", olderBrother);
 
     return 0;
+    }
 }
