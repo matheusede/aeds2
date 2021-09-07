@@ -9,6 +9,7 @@ public class Main {
         return result;
     }
 
+    //Função que faz o ciframento de César.
     public static String encryption(String input) {
         String result;
         char [] characters = new char [input.length()];
@@ -29,7 +30,7 @@ public class Main {
 
         do{
             in [inputNumber] = MyIO.readLine();
-            out [inputNumber] = encryption(in[inputNumber]);
+            out [inputNumber] = encryption(in[inputNumber]); //chamada da fução do ciframento.
             MyIO.println(out[inputNumber]);
             
         } while (returnEnd(in[inputNumber++]) == false);

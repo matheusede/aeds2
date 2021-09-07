@@ -11,7 +11,8 @@ public class Main{
         return result;
     }
 
-    public static String randomizeString(String input) {
+    //Função que substitui as letras
+    public static String randomizeString(String input, Random gerador) {
         String result;
         char [] characters = new char [input.length()];
 
@@ -19,9 +20,6 @@ public class Main{
             char aux = (char)(input.charAt(i));
             characters[i] = aux;
         }
-
-        Random gerador = new Random();
-        gerador.setSeed (4) ;
 
         char random1 =  ( char ) ( 'a' + (Math. abs ( gerador . nextInt ( ) ) % 26 ) );
         char random2 =  ( char ) ( 'a' + (Math. abs ( gerador . nextInt ( ) ) % 26 ) );
@@ -41,12 +39,16 @@ public class Main{
         String[] in = new String[1000];
         String[] out = new String[1000];
         int inputNumber = 0;
+        
+        Random gerador = new Random(); //Cria o random que é passado pela função.
+        gerador.setSeed (4) ;
 
         do{
             in [inputNumber] = MyIO.readLine();
-            out [inputNumber] = randomizeString(in[inputNumber]);
+            out [inputNumber] = randomizeString(in[inputNumber], gerador);
             MyIO.println(out[inputNumber]);
             
-        } while (returnEnd(in[inputNumber++]) == false);
+        } 
+        while (returnEnd(in[inputNumber++]) == false);
     }
 }
